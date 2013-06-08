@@ -1,0 +1,22 @@
+{% extends "base.html"%}
+
+{%block title%}搜索{% endblock %}
+
+{% block content %}
+<form action="" method="POST"/>
+ <table>
+  {{sf.as_table}}
+
+</table>
+<input type="submit" value="搜索">
+</form>
+
+{% for act in acts %}
+  活动主题：<a href="/show_act1/{{act.id}}" > {{act}}</a><br />
+  活动图片 ：<a href="/show_act1/{{act.id}}" ><img src="/static/{{act.icon}}" alt="" ></a><br />
+{% endfor %}
+
+{% for act in sacts %}
+  {{act}}
+{% endfor %}
+{% endblock %}

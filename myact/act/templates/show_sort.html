@@ -1,0 +1,22 @@
+{% extends "base.html"%}
+
+{%block title%}搜索{% endblock %}
+
+{% block content %}
+
+类别： <a href="/show_sort/sort/?sort=all">所有</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_sort/sort/?sort=音乐">音乐</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_sort/sort/?sort=聚会">聚会</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_sort/sort/?sort=电影">电影</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_sort/sort/?sort=运动">运动</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_sort/sort/?sort=旅游">旅游</a><br />
+      <br />
+      <br />
+      {% for act in sacts %}
+        活动名称：{{act}}<br />
+        <br />
+        活动图片：<img src="/static/{{act.icon}}" alt="" width="80px" height="120px" ><br />
+      {% endfor %}
+      
+
+{% endblock %}

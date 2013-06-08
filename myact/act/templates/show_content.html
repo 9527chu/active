@@ -1,0 +1,37 @@
+{% extends "base.html"%}
+
+{% block title %}评论内容{% endblock %}
+
+{% block content%}
+ 
+{% for user in users %}
+   {% for review in reviews %} 
+     {% if user == review.user_reviews%} 
+       {{user.get_profile.nickname}}
+       {{review.content}}
+       {{review.re_pic}}
+       {{re_time}}
+    {% endif %} 
+  {% endfor %}
+{% endfor %}
+当前用户：{{user.username}}<br />
+活动名称 ：{{act}}<br/>
+活动图片：<img src="/static/{{act.icon}}" alt="" width="80px" height="100px">
+
+<br />
+<hr>
+
+{% for rev in reviews %}
+  
+  {% if rev.activity = act %}
+  评论人  ：{{rev.user}} <br/>
+  
+  评论内容：{{rev.content}}<br/>
+  评论图片：<img src="/static/{{rev.re_pic}}" alt="" width="100px" height="150px" ><br/>
+  <br />
+  <br />
+  <hr size="20px">
+  {% endif %}
+ 
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,61 @@
+
+{% extends "base.html"%}
+{% block title %} 个人主页 {% endblock %}
+
+{% block content %}
+<div class="row-fluid marketing">
+       
+       <div class="span6">
+用户名：{{user.get_profile.nickname}}<br />
+头像  ：<img src="/static/{{user.get_profile.headImg}}" alt="" width="50px" height="60px"><br />
+
+<br />
+<br />
+<a href="/xiu_psw" >修改密码</a>
+
+       </div>
+
+
+
+       <div class="span6">
+       关注的活动：
+         {% for a in user.get_profile.attention.all %}
+           {{a}}
+         {% endfor %}
+         <br />
+       参加的活动：
+         {% for j in user.get_profile.join.all %}
+           {{j}}
+         {% endfor %}
+         <br />
+         <br />
+         <br />
+       
+         <a href="/cr_act/" >创建活动</a>
+       </div>  
+</div>              
+	    <br />
+       <br />
+	    推荐活动
+       <hr>
+       <div class="container">
+       <div class="row-fluid marketing">
+       {% for act in show_acts %}
+       <div class="span4">
+       活动主题 ：{{act.title}}<br />
+       活动内容 ：{{act.content}}<br />
+       活动图片 ：<img src="/static/{{act.icon}}" alt="" width="150px" height="200px" ><br />
+       <a href="/review/{{act.id}}" >评论</a><br />
+       <a href="/show_content/{{act.id}}" >显示评论</a><br />
+       <a href="/attention/?id={{act.id}}" >关注</a>{{user.get_profile.a_num}}
+       <a href="/u_att/?id={{act.id}}" >取消关注</a>
+       <a href="/join/?id={{act.id}}" >参加</a><!-- {{act.userprofile_set.all.0.join.all.count}} -->
+       <a href="/u_join/?id={{act.id}}" >退出活动</a>
+       </div> 
+
+       {% endfor %}
+     
+       </div> 
+       </div>
+         
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}注册{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="form-signin">
+  <h2 class="form_signin-heading">欢迎注册</h2>
+  <form method="POST" action="" enctype="multipart/form-data">
+  <table>
+    {{uf.as_table}}<br />  
+  </table>
+  <input type="submit" class="btn btn-large btn-primary" value="注册">
+  </form>
+  <input type="button" value="验证" onclick="userregist()" onkeyup="process()">
+  
+  <div id="user"> 
+  </div>
+  
+  <script type="text/javascript" >
+   var hr = new XMLHttpRequest();
+    alert(hr);
+    hr.overideMimeType('text/xml');
+    
+    hr.onreadystatechange = process;
+    
+    function userregist(){
+     
+      var id_username = document.getElementById('id_username').value;
+         
+      hr.open('post','/regist/',true);
+             
+      hr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+         
+      hr.send('username='+id_username);
+        
+      
+    }
+    
+    
+    function process(){
+    
+    if (hr.readystate == 4 && hr.status == 200){
+    alert(hr);  
+    
+    var user = document.getElementById('user')
+   
+    user.innerHTML = hr.responseText;
+    alert(user.innerHTML)
+
+            
+    }    
+    
+ }
+ process();
+  
+</script>
+
+ 
+{% endblock %}

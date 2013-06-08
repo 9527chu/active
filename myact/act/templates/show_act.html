@@ -1,0 +1,91 @@
+{% extends "base.html"%}
+
+{% block title %}活动页{% endblock %}
+
+{% block content %}
+
+
+
+类别： <a href="/show_sort/sort/?sort=all">所有</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_sort/sort/?sort=音乐">音乐</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_sort/sort/?sort=聚会">聚会</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_sort/sort/?sort=电影">电影</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_sort/sort/?sort=运动">运动</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_/sort/?sort=旅游">旅游</a><br />
+      <br />
+      <br />
+      {% for act in sacts %}
+        活动名称：{{act}}<br />
+        <br />
+        活动图片：<img src="/static/{{act.icon}}" alt="" width="80px" height="120px" ><br />
+      {% endfor %}
+
+
+
+
+
+
+
+
+<div class="row" style="margin-left:-10px">
+ 
+<div class="span10">
+ {% for act in acts %}
+ <div class="row" style="padding-top:10">  
+        <div class="span3 media-grid">  
+           {{act.id}}
+   活动主题：{{act.title}}<br />
+   活动内容：{{act.content}}<br />
+   活动图片：<img src="/static/{{act.icon}}" alt="" width="100px" height="150px"><br />
+   活动标签：{% for tab in act.tab.all %}
+            {{tab}}<br />
+           {% endfor %}
+   发布时间：{{act.pub_time}}  
+   开始时间：{{act.st_time}}<br />
+   结束时间 ：{{act.fi_time}}<br />
+   活动发起人：{{act.sponsor}}<br />
+             
+  
+     
+   
+   是否收费:{{act.charge}}<br />
+  
+   活动分类：{{act.sort}}<br />
+   
+   <a href="/show_content/{{act.id}}" >显示评论</a><br />
+   
+   
+   
+  
+   <br />	
+   <br />
+
+</div>
+</div>
+{% endfor %}
+ </div>   
+
+</div> 
+
+<div class="pagination">
+    <span class="step-links">
+        {% if acts.has_previous %}
+            <a href="?page={{ acts.previous_page_number }}">上一页</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ acts.number }} of {{ acts.paginator.num_pages }}.
+        </span>
+
+        {% if acts.has_next %}
+            <a href="?page={{ acts.next_page_number }}">下一页</a>
+        {% endif %}
+    </span>
+</div>
+
+<script type="text/javascript" src="./Calendar1.js" language="javascript" >
+  
+</script>
+
+
+{% endblock %}

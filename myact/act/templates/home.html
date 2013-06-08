@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>欢迎</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+
+
+ <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+ </style>
+
+<body>
+   <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="">首页</a></li>
+          <li><a href="/show_act/">活动页</a></li>
+          <li><a href="/my_home/">个人主页</a></li>
+        </ul>
+        <h2 class="muted">95活动</h2>
+     
+      </div>
+
+   </div>
+   
+     <hr>
+
+      <div class="jumbotron">
+        <h1>欢迎来到95活动</h1>
+          
+        <p class="lead">随便逛逛</p>
+        <a class="btn btn-large btn-success" href="/regist/">注册</a>
+        <a class="btn btn-large btn-success" href="/ulogin/">登录</a>
+      </div>
+  
+      <div class="">   
+      类别： <a href="/show_sort/sort/?sort=all">所有</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_sort/sort/?sort=音乐">音乐</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_sort/sort/?sort=聚会">聚会</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_sort/sort/?sort=电影">电影</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_sort/sort/?sort=运动">运动</a>&nbsp;&nbsp;&nbsp;
+      <a href="/show_/sort/?sort=旅游">旅游</a><br />
+      <br />
+      <br />
+     </div> 
+  
+  
+  
+
+      <h3>热门活动</h3>
+      <hr>
+
+           
+         
+         <div class="row-fluid marketing">
+            {% for act in act_list %}
+            <div class="span4">
+           
+            活动名称：{{act.title}}<br />
+            活动内容：{{act.content}}<br />
+	         活动图片：<img src="/static/{{act.icon}}" alt="" ><br />
+            发布时间：{{act.pub_time}}<br />
+            开始时间：{{act.st_time}}<br />
+            关注数量：{{act.a_num}}
+           
+            </div> 
+           {% endfor %}
+         </div>    
+
+  
+   
+   
+    <script src= "/static/jquery.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends "base.html"%}
+
+{% block title %} 评论{% endblock %}
+
+{% block content %}
+<form action="" method="POST" enctype="multipart/form-data">
+<table>
+{{rf.as_table}}
+评论时间：{{re_time}}
+</table>
+<input type="submit" value="评论">
+</form>
+{% endblock %}

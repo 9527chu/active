@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}组织活动{% endblock %}
+
+{% block content %}
+<div class="container">
+<form action="" method="POST" enctype="multipart/form-data">
+<table>
+{{cf.as_table}}
+  <!--  <div class="input-append date form_datetime">
+    <input size="16" type="text" value="" readonly>
+    <span class="add-on"><i class="icon-th"></i></span>
+    </div>
+     
+    <script type="text/javascript">
+    $(".form_datetime").datetimepicker({
+    format: "dd MM yyyy - hh:ii"
+    });
+    </script>  -->  
+</table>
+
+<div class="row" style="margin-left:1px">
+   <div class="span4">
+类别：<select name="sort">
+ {% for s in sorts %}
+ <option>{{s}}</option><br />
+ {% endfor %}
+</select>
+   </div>
+</div>
+<input type="submit" value="创建">
+</form>
+</div>
+{% endblock %}
+
